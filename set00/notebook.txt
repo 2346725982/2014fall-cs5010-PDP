@@ -1,0 +1,89 @@
+Activity 1 of Modulo 00
+Date	Who	Start	Stop	Interrupt.	Q	Time	Comment
+9/1	ZW	21:30	10:00			Step1	30	No Internet in house, do it with my iPhone, failed
+9/2	ZW	8:40	8:50			Step4	10	easy work
+9/2	ZW	11:30	11:32			Step3	2	signup is easy
+9/2	ZW	11:32	11:38			Step6	6	as above, expect I have to download
+9/2	ZW	11:38	11:45			Step5	7	download
+9/2	ZW	14:25	14:35			Step1	10	do it in the library, succeed
+9/3	ZW	15:27	15:48			Step2	21	try to figure out how to use the free version
+Total Time On Task Step1 (minutes)	40
+Total Time On Task Step2 (minutes)	21
+Total Time On Task Step3 (minutes)	2
+Total Time On Task Step4 (minutes)	10
+Total Time On Task Step5 (minutes)	7 
+Total Time On Task Step6 (minutes)	6
+TOTOStep1 (hours and tenths)		0.7
+TOTOStep2 (hours and tenths)		0.3
+TOTOStep3 (hours and tenths)		0.1
+TOTOStep4 (hours and tenths)		0.2
+TOTOStep5 (hours and tenths)		0.1
+TOTOStep6 (hours and tenths)		0.1
+
+Activity 2 of Modulo 00
+Date	Who	Start	Stop	Interrupt.	Q	Time	Comment
+9/3	ZW	10:25	10:28			2	3	Polish Notation, done it before
+9/3	ZW	10:28	10:34	2		1	6	only takes me some time to think about expression, no hard on writing programs, don’t like this kind of work
+9/3	ZW	10:34	10:41			3	7	get familiar with writing programs
+9/3	ZW	10:41	10:43			4	2	Am I getting the meaning wrong?
+=============committing to git : 9/3 10:43======================
+9/3	ZW	13:50	14:01			5	11	follow the example to write the annotation
+9/3	ZW	14:01	14:15			6	14	try to find the picture, the expression itself is all we have learned, no hard work
+9/3	ZW	14:15	14:20			7	5	have written it with C++
+9/3	ZW	14:20	14:24			8	4	the same as above question
+9/3	ZW	14:24	14:30			9	6	the program is not hard
+9/3	ZW	14:30	14:37			10	7	try to simplify the logic, make it terse
+9/3	ZW	14:37	14:51			9	14	tried to find some info about the difference between modulo and remainder, still don’t get it
+=============committing to git : 9/3 14:52======================
+9/4	ZW	9:30	9:43			16	13	try to understand, set path of pictures, Are Ex11~Ex15 doable, literately?
+9/4	ZW	9:43	9:48			17	5	no hard work
+9/4	ZW	9:48	10:12			18	24	study the ‘math module’ of Racket
+9/4	ZW	10:12	10:18			19	6	Am I getting the meaning wrong, again?
+9/4	ZW	10:18	10:55	10		20	37	tried some methods, failed
+=============committing to git : 9/4 10:55======================
+9/4	ZW	14:00	14:30	5		20	30	still cannot figure it out, go ask in Piazza
+9/4	ZW	14:30	14:48	4		24	18	do as examples, it’s not that hard, I think doing Ex21~Ex23 is meaningless.
+9/4	ZW	14:48	15:03			25	15	think about the ‘empty’ situation, test examples
+9/4	ZW	15:03	15:20			26	17	cannot understand how to draw in a 300*300 scene, gave up
+9/4	ZW	15:20	15:27			27	7	tried some ways, didn’t work, left it temporarily
+9/4	ZW	15:27	15:57			20	30	got answers from Piazza, learned ‘overlay/xy’ function, finished!
+=============committing to git : 9/4 15:58======================
+
+Total Time On Task Q1 (minutes)		6
+Total Time On Task Q2 (minutes)		3
+Total Time On Task Q3 (minutes)		7
+Total Time On Task Q4 (minutes)		2
+Total Time On Task Q5 (minutes)		11
+Total Time On Task Q6 (minutes)		14
+Total Time On Task Q7 (minutes)		5
+Total Time On Task Q8 (minutes)		4
+Total Time On Task Q9 (minutes)		20
+Total Time On Task Q10 (minutes)	7
+Total Time On Task Q16 (minutes)	13
+Total Time On Task Q17 (minutes)	5
+Total Time On Task Q18 (minutes)	24
+Total Time On Task Q19 (minutes)	6
+Total Time On Task Q20 (minutes)	97
+Total Time On Task Q24 (minutes)	18
+Total Time On Task Q25 (minutes)	15
+Total Time On Task Q26 (minutes)	17 (give up)
+Total Time On Task Q27 (minutes)	7 (give up)
+TOTO1 (hours and tenths)		0.1
+TOTO2 (hours and tenths)		0.1
+TOTO3 (hours and tenths)		0.1
+TOTO4 (hours and tenths)		0.1
+TOTO5 (hours and tenths)		0.2
+TOTO6 (hours and tenths)		0.2
+TOTO7 (hours and tenths)		0.1
+TOTO8 (hours and tenths)		0.1
+TOTO9 (hours and tenths)		0.3
+TOTO10 (hours and tenths)		0.1
+TOTO16 (hours and tenths)		0.2
+TOTO17 (hours and tenths)		0.1
+TOTO18 (hours and tenths)		0.4
+TOTO19 (hours and tenths)		0.1
+TOTO20 (hours and tenths)		1.6
+TOTO24 (hours and tenths)		0.3
+TOTO25 (hours and tenths)		0.3
+TOTO26 (hours and tenths)		0.3 (give up)
+TOTO27 (hours and tenths)		0.1 (give up)

@@ -1,0 +1,134 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname reqexp2) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+(require "extras.rkt")
+(require rackunit)
+
+(provide
+ initial-state
+ next-state
+ accepting-state?
+ error-state?)
+
+(define AB "start, expect to see an 'a', 'b', 'c' or 'd' next")
+(define CD "expect to see: 'c', 'd', or 'e'")
+(define EE "encountered a 'e', finished")
+(define ER "error, user pressed illegal key")
+
+;Data Definition
+(define-struct state(s))
+
+;Constructor Template
+;a state is a (make-state(string))
+
+;Interpretation
+;s is a string that indicates the current state
+;it can only be one of the "AB", "CD", "EE" or "ER"
+;Destructor Template
+;machin-fn: machine -> ??
+;(define (machine-fn machine)
+; (... (machine-state machine)))
+;Examples:
+
+;initial-state : Number -> State
+;GIVEN: a number
+;RETURNS: a representation of the initial state
+;of your machine.  The given number is ignored.
+;Examples:
+;Design Strategy:
+;Function Definition
+(define (initial-state num)
+  (make-state AB))
+
+;bad-letter: KeyEvent -> boolean
+;GIVEN: a keyevent
+;RETURNS: 1 if the letter of keyevent is not 'a', ' b', 'c', 'd' and 'e'
+;Examples:
+;...
+;Design Strategy: Cases
+;Function Definition
+(define (bad-letter ke)
+  (if (or (string=? ke "a") (string=? ke "b") (string=? ke "c") 
+          (string=? ke "d") (string=? ke "e"))
+      false true))
+
+;out-of-sequence: state letter -> boolean
+;GIVEN: a machine state and a keyevent
+;RETURENS: 1 if the input of keyevent would make the machine go into an error state
+;Example:
+;...
+;Design Strategy: Cases
+;Function Define
+(define (out-of-sequence state ke)
+  (cond
+    [(and (string=? (state-s state) AB) 
+          (or (string=? ke "a") (string=? ke "b") (string=? ke "c") (string=? ke "d"))) 
+     false]
+    [(and (string=? (state-s state) CD) 
+          (or (string=? ke "c") (string=? ke "d") (string=? ke "e"))) 
+     false]
+    [else true]))
+
+;next-state : State KeyEvent -> State
+;GIVEN: a state of the machine and a key event.
+;RETURNS: the state that should follow the given key event.  A key
+;event that is to be discarded should leave the state unchanged.
+;Example:
+;...
+;Design Strategy: Cases
+;Function Definition
+(define (next-state state ke)
+  (cond
+    [(> (string-length ke) 1) (make-state (state-s state))]
+    [(or (bad-letter ke) (out-of-sequence state ke)) (make-state ER)]
+    [else
+     (cond
+       [(and (string=? (state-s state) AB) 
+             (or (string=? ke "a") (string=? ke "b")))
+        (make-state AB)]
+       [(and (string=? (state-s state) AB) 
+             (or (string=? ke "c") (string=? ke "d"))) 
+        (make-state CD)]
+       [(and (string=? (state-s state) CD)
+             (or (string=? ke "c") (string=? ke "d"))) 
+        (make-state CD)]
+       [(and (string=? (state-s state) CD)
+             (string=? ke "e"))
+        (make-state EE)])]))
+
+;
+;accepting-state? : State -> Boolean
+;GIVEN: a state of the machine
+;RETURNS: true iff the given state is a final (accepting) state
+;Examples:
+;...
+;Design Strategy: Function Compostition
+;Function Define
+(define (accepting-state? machine)
+  (if (string=? (state-s machine) ER) false true))
+
+;error-state? : State -> Boolean
+;GIVEN: a state of the machine
+;RETURNS: true iff the string seen so far does not match the specified
+;regular expression and cannot possibly be extended to do so.
+;Example:
+;...
+;Design Strategy: Function Composition
+;Function Define
+(define (error-state? machine)
+  (if (string=? (state-s machine) ER) true false))
+
+(begin-for-test
+  (check-equal? (next-state (make-state AB) "a") (make-state AB))
+  (check-equal? (next-state (make-state AB) "b") (make-state AB))
+  (check-equal? (next-state (make-state AB) "c") (make-state CD))
+  (check-equal? (next-state (make-state AB) "d") (make-state CD))
+  (check-equal? (next-state (make-state CD) "c") (make-state CD))
+  (check-equal? (next-state (make-state CD) "d") (make-state CD))
+  (check-equal? (next-state (make-state CD) "e") (make-state EE))
+  (check-equal? (next-state (make-state AB) "e") (make-state ER))
+  (check-equal? (next-state (make-state CD) "a") (make-state ER))
+  (check-equal? (next-state (make-state AB) "v") (make-state ER))
+  (check-equal? (next-state (make-state CD) "v") (make-state ER))
+  (check-equal? (next-state (make-state AB) "aaa") (make-state AB))
+  (check-equal? (next-state (make-state CD) "vvv") (make-state CD)))

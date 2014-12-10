@@ -1,0 +1,42 @@
+Date	Who	Start	Stop	Interruptions	Question	TimeOnTask	Comments
+
+11/07	ZW,PT	8:00	13:08   0                1,2            308             Data definitions and some functions in both the questions completed
+============committing to git: 11/07 13:08 ===================  
+
+11/07	ZW,PT	13:30	15:58   0                1,2            148             Remaining functions completed without test cases and comments
+============committing to git: 11/07 15:58 ===================
+
+11/09	ZW,PT	12:00	02:23   0                1,2            143             Functions completed comments
+============committing to git: 11/09 02:25 =================== 
+
+11/09	ZW,PT	20:00	21:50   0                1,2            110             Some functions completed comments
+============committing to git: 11/09 21:51 =================== 
+
+11/10	ZW,PT	00:00	01:04   10               1,2            54              Functions completed comments and test cases
+============committing to git: 11/10 01:05 ===================
+
+11/11	ZW,PT	12:20	13:20   0                3              60              Functions completed comments and test cases
+============committing to git: 11/11 13:21 ===================
+
+11/11	ZW,PT	13:38	14:08   0                1,2            30              Changes in comments and test cases
+============committing to git: 11/11 14:10 ===================
+
+11/11	ZW,PT	16:10	16:40   0                1,2            30              Minor changes in comments and test cases
+============committing to git: 11/11 16:42 ===================
+
+11/11	ZW,PT	16:10	17:05   0                3              55              Minor changes in comments and test cases
+============committing to git: 11/11 17:08 ===================
+
+11/11	ZW,PT	17:11	17:16   0                3              5              Minor changes in comments and test cases
+============committing to git: 11/11 17:17 ===================
+
+11/11	ZW,PT	17:27	17:29   0                3              2              Minor changes in comments and test cases
+============committing to git: 11/11 17:29 ===================
+
+
+Total Time On Q1 (minutes)           412                     
+Total Time On Q2 (minutes)           411
+Total Time On Q3 (minutes)           122           
+TOTQ1 (hours and tenths)             6.8                        
+TOTQ2 (hours and tenths)             6.8
+TOTQ3 (hours and tenths)             2.0                                              

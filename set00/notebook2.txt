@@ -1,0 +1,44 @@
+Activity 2 of Modulo 00
+Date	Who	Start	Stop	Interruptions	Questions	TimeOnTask	Comments
+9/11	ZW	18:39	19:37			27a		58		takes me so much time to think about another method	
+=============committing to git : 9/11 19:38======================
+9/12	ZW	8:15	8:17			11		2		easy work
+9/12	ZW	8:30	8:36			12		6		the same
+9/12	ZW	8:36	8:38			13		2		from material
+9/12	ZW	8:38	8:43			14		5		from material
+9/12	ZW	8:43	8:46			15		3		write as the material teaches
+9/12	ZW	8:46	8:49			22		3		easy work
+9/12	ZW	8:49	8:51			23		2		the same
+9/12	ZW	8:51	9:02	3		31		9		like the normal recursive function
+9/12	ZW	9:02	9:53			21		51		spend so much time the adjust
+9/12	ZW	9:53	10:05	1		21a		13		add sth into Ex21
+9/12	ZW	10:05	10:28			29		23		define a recursive function of Ex22
+9/12	ZW	10:42	11:00			26		18		spend some time on figuring out what how the recursive function works for images
+=============committing to git : 9/12 11:00======================		
+
+Total Time On Task Q11 (minutes)	2
+Total Time On Task Q12 (minutes)	6
+Total Time On Task Q13 (minutes)	2
+Total Time On Task Q14 (minutes)	5
+Total Time On Task Q15 (minutes)	3
+Total Time On Task Q21 (minutes)	51
+Total Time On Task Q21a (minutes)	13
+Total Time On Task Q22 (minutes)	3
+Total Time On Task Q23 (minutes)	2
+Total Time On Task Q26 (minutes)	18
+Total Time On Task Q27a (minutes)	58
+Total Time On Task Q29 (minutes)	23
+Total Time On Task Q31 (minutes)	9
+TOTQ11 (hours and tenths)		0.1
+TOTQ12 (hours and tenths)		0.1
+TOTQ13 (hours and tenths)		0.1
+TOTQ14 (hours and tenths)		0.1
+TOTQ15 (hours and tenths)		0.1
+TOTQ21 (hours and tenths)		0.9
+TOTQ21a (hours and tenths)		0.2
+TOTQ22 (hours and tenths)		0.1
+TOTQ23 (hours and tenths)		0.1
+TOTQ26 (hours and tenths)		0.3
+TOTQ27a (hours and tenths)		1
+TOTQ29 (hours and tenths)		0.4
+TOTQ31 (hours and tenths)		0.1

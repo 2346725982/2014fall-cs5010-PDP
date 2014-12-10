@@ -1,0 +1,40 @@
+Date	Who	Start	Stop	Interruptions	Question	TimeOnTask	Comments
+
+11/24	ZW,PT	09:00	09:30   0               1               30              Program completed without comments and test cases
+
+11/24	ZW,PT	09:30	12:23   0               2               173             Program completed without comments and test cases
+============committing to git: 11/24 12:23 ===================
+
+11/29	ZW,PT	09:30	10:18   0               2               48              Fixed a bug in the code partial
+============committing to git: 11/29 10:18 ===================
+
+11/29	ZW,PT	12:00	13:06   0               2               66              Fixed a bug in the code
+============committing to git: 11/29 13:06 ===================
+
+11/30	ZW,PT	03:20	04:28   0               1               68              Program completed with comments and test cases
+============committing to git: 11/30 04:29 ===================
+
+11/30	ZW,PT	07:10	08:10   0               2               60              Minor change on the code
+============committing to git: 11/30 08:10 ===================
+
+11/30	ZW,PT	23:43	02:43   0               2               180             Program completed with test cases
+12/01
+============committing to git: 12/01 02:46 ===================
+
+12/01	ZW,PT	10:20	10:50   0               2               30              Completed some of the comments
+============committing to git: 12/01 10:51 ===================
+
+12/01	ZW,PT	13:00	14:00   0               2               60              finish comments
+============committing to git: 12/01 14:00 ===================
+
+12/01	ZW,PT	14:00	15:00   0               2               60              final review (1)
+============committing to git: 12/01 15:00 ===================
+
+12/01	ZW,PT	15:20	15:50   0               2               30              final review (2)
+============committing to git: 12/01 15:51 ===================
+
+Total Time On Q1 (minutes)       98
+Total Time On Q2 (minutes)       697
+TOTQ2 (hours and tenths)         1.6
+TOTQ2 (hours and tenths)         11.6
+                                                     

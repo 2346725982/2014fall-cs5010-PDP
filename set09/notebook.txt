@@ -1,0 +1,26 @@
+Date	Who	Start	Stop	Interruptions	Question	TimeOnTask	Comments
+
+11/15	ZW,PT	8:30	00:38   0               1               248             Program completed without comments and test cases
+11/16
+============committing to git: 11/16 00:39 =================== 
+
+11/16	ZW,PT	19:30	21:05   0               1               95              Program completed without comments excluding test cases
+============committing to git: 11/16 21:06 =================== 
+
+11/17	ZW,PT	00:30	03:05   0               1               155             Program completed with comments and test cases 
+============committing to git: 11/17 03:05 ===================
+
+11/17	ZW,PT	03:48	03:53   0               1               5               Added data definition 
+============committing to git: 11/17 03:54 ===================
+
+11/17	ZW,PT	13:30	14:17   0               1               37              Changes in test case coverage
+============committing to git: 11/17 14:18 ===================
+
+11/17	ZW,PT	15:31	16:31   0               1               60              added examples for each function
+============committing to git: 11/17 16:32 ===================
+
+11/17	ZW,PT	16:45	17:05   0               1               20              minor corrections
+============committing to git: 11/17 17:05 ===================
+
+Total Time On Q1 (minutes) 620
+TOTQ1 (hours and tenths)   10.3                                                    

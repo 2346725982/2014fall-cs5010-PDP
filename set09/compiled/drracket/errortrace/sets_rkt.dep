@@ -1,0 +1,1 @@
+("6.0" ("6458c65a13e6846b50d82936458a7369e2e05746" . "08d9c97331fa308fc244ed554b44ae20ee571b46") #"/Users/wangzoltan/Desktop/set09/extras.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"rackunit" #"main.rkt") (collects #"lang" #"htdp-intermediate-lambda.rkt") (collects #"lang" #"htdp-intermediate-lambda-reader.rkt"))

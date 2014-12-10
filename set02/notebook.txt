@@ -1,0 +1,26 @@
+Date	Who	Start	Stop	Interruptions	Questions	TimeOnTask	Comments
+9/22	ZW	15:25	18:05	5		1		280		Q1 understanding, coding
+9/22	ZW	18:55	19:05			1		10		Q1 improving
+9/22	ZW	19:05	20:05	3		1		60		stuck at mouse move
+9/22	ZW	20:25	21:00			1		35		the same as above
+9/22	ZW	22:20	23:20	2		2		60		Q2 read problems
+=============committing to git : 9/23 10:35===============================
+9/23	ZW	10:35	11:20	1		1		45		Q1 finish coding
+9/23	ZW	11:20	12:00			2		40		Q2 coding
+9/23	ZW	13:00	14:40	3		2		100		Q2 finish coding
+=============committing to git : 9/23 14:45===============================
+9/23	ZW	16:55	17:25			1		30		Q1 note
+9/23	ZW	17:25	17:45			2		20		Q2 modify
+9/23	Zw	20:15	21:00			2		45		Q2 finish
+=============committing to git : 9/23 21:05===============================
+9/25	ZW	15:30	16:30			1		60		Q1 modify
+9/25	ZW	16:30	17:15			2		45		Q2 modify
+9/25	ZW	21:00	21:20	1		2		20		Q2 modify
+=============committing to git : 9/25 21:20===============================
+9/25	ZW	13:00	15:40	4		1 2		160		Q1 & Q2 review
+=============committing to git : 9/25 15:50===============================
+
+Total Time On Task Q1 (minutes)	600
+Total Time On Task Q2 (minutes)	410
+TOTQ1 (hours and tenths)	10	
+TOTQ2 (hours and tenths)	8.2	

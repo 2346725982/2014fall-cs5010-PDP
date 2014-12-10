@@ -1,0 +1,44 @@
+Date	Who	Start	Stop	Interruptions	Questions	TimeOnTask	Comments
+9/14	ZW	17:11	18:00	2		1		50		finish DDR, no idea about 6.examples
+=============committing to git : 9/15 18:00===============================
+9/15	ZW	9:05	10:17			1		72		define functions, not finished yet
+9/15	ZW	10:28	11:15			1		47		stuck in the importing files
+9/15	ZW, DQ	12:55	14:55	2		1		60		discuss
+9/15	ZW	14:55	15:30	3		1		35		coding
+9/15	ZW	18:08	18:53	1		1		45		finish coding
+9/15	ZW	18:53	20:18	2		1		85		begin test
+=============committing to git : 9/15 20:30===============================
+9/15	ZW	20:30	20:53			2		23		read question
+9/16	ZW	10:47	11:36			1		50		modify Q1 recipe
+9/16	ZW	11:36	12:22			2		46		Q2 recipe
+=============committing to git : 9/16 12:22===============================
+9/16	ZW	13:11	14:30			2		79		write Q2 functions
+9/16	ZW	14:30	14:55			2		25		modify Q2 functions
+=============committing to git : 9/16 14:56===============================
+9/16	ZW	15:05	16:05			3		60		Q3
+9/16	ZW	17:10	17:55			3		45		modify Q3, coding
+9/16	ZW	20:30	21:45			4		75		Q4
+9/16	ZW	22:20	22:40			4		20		Q4 testing
+=============committing to git : 9/16 11:00===============================		
+9/18	ZW	8:25	9:22			4		60		modify Q4
+9/18	ZW	9:22	11:08			3		106		modify Q3
+=============committing to git : 9/18 11:09===============================		
+9/18	ZW	13:45	15:00			3		75		modify Q3
+9/18	ZW	19:00	20:00			3		60		modify Q3
+9/19	ZW	10:10	10:40			3		30		modify Q3
+9/19	ZW	10:40	11:40			1		60		finish Q1
+9/19	ZW	11:40	11:50			2		10		finish Q2
+9/19	ZW	11:50	12:05			3		15		finish Q3
+9/19	ZW	12:05	12:25			4		20		almost finish Q4
+=============committing to git : 9/19 12:25===============================		
+=============committing to git : 9/22 12:35===============================		
+
+
+Total Time On Task Q1 (minutes)	505
+Total Time On Task Q2 (minutes)	183
+Total Time On Task Q3 (minutes)	361
+Total Time On Task Q4 (minutes)	175
+TOTQ1 (hours and tenths)	8.4	
+TOTQ2 (hours and tenths)	3.0	
+TOTQ3 (hours and tenths)	6.0	
+TOTQ4 (hours and tenths)	2.9	

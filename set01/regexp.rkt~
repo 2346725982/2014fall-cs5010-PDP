@@ -1,0 +1,30 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname regexp) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+(require "extras.rkt")
+(require rackunit)
+
+(provide
+ initial-state
+ next-state
+ accepting-state?
+ error-state?
+
+initial-state : Number -> State
+GIVEN: a number
+RETURNS: a representation of the initial state
+of your machine.  The given number is ignored.
+
+next-state : State KeyEvent -> State
+GIVEN: a state of the machine and a key event.
+RETURNS: the state that should follow the given key event.  A key
+event that is to be discarded should leave the state unchanged.
+
+accepting-state? : State -> Boolean
+GIVEN: a state of the machine
+RETURNS: true iff the given state is a final (accepting) state
+
+error-state? : State -> Boolean
+GIVEN: a state of the machine
+RETURNS: true iff the string seen so far does not match the specified
+regular expression and cannot possibly be extended to do so.

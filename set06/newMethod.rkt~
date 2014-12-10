@@ -1,0 +1,241 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname newMethod) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+;; pretty.rkt
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; FILE REQUIRED
+
+(require "extras.rkt")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; FUNCTION PROVIDE
+
+(provide
+ expr-to-strings
+ make-sum-exp
+ make-mult-exp
+ sum-exp-exprs
+ mult-exp-exprs)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; CONSTANTS
+
+(define ZERO 0)
+(define ONE 1)
+(define THREE 3)
+(define SPACE " ")
+(define TRIPLE-SPACE "   ")
+(define RIGHT-PARENTHESIS ")")
+(define RIGHT-PAREN-CHAR #\))
+(define SUM-TITLE "(+")
+(define MULT-TITLE "(*")
+(define ERROR-MESSAGE "not enough room")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; DATA DEFINITION
+
+;; sum-exp
+(define-struct sum-exp (exprs))
+;; A Sum-exp is
+;; (make-sum-exp NELOExpr)
+;; Interp:
+;; exprs is a non-empty list of expressions
+;; Examples:
+;; Template:
+;; sum-exp-fn : Sum-exp -> ??
+;(define (sum-exp-fn se)
+;  (...
+;   (sum-exp-exprs se)))
+
+;; mult-exp
+(define-struct mult-exp (exprs))
+;; A Mult-exp is
+;; (make-mult-exp NELOExpr))
+;; Interp:
+;; exprs is a non-empty list of expressions
+;; Examples:
+;; Template:
+;; mult-exp-fn : Mult-exp -> ??
+;(define (mult-exp-fn me)
+;  (...
+;   (mult-exp-exprs me)))
+
+;; An Expr is one of
+;; -- Integer
+;; -- (make-sum-exp NELOExpr)
+;; -- (make-mult-exp NELOExpr)
+;; Interpretation: a sum-exp represents a sum and a mult-exp
+;; represents a multiplication.
+;; Template:
+;; expr-fn : Expr -> ??
+;(define (expr-fn exp)
+;  (cond
+;    [(integer? exp) ...]
+;    [(sum-exp? exp) ...]
+;    [(mult-exp? exp) ...]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; expr-to-strings : Expr NonNegInt -> ListOf<String>
+;; GIVEN: An expression and a width
+;; RETURNS: A representation of the expression as a sequence of lines, with
+;; each line represented as a string of length not greater than the width.
+;; EXAMPLE: see test
+;; STRATEGY: function compostion
+(define (expr-to-strings expr width) 
+  (e-to-s expr width ZERO))
+
+;; e-to-s : Expr NonNegInt NonNegInt -> ListOf<String>
+;; GIVEN: an expression, a width and the end parenthesis number
+;; WHERE: end parenthesis will never be less than 0
+;; RETURNS: a list of strings according to the relation of the width and the
+;; expression length
+;; EXAMPLE: see test
+;; STRATEGY: function composition
+(define (e-to-s expr width end)
+  (if (<= (+ (string-length (one-line expr)) end) width)
+      (list (string-append (one-line expr) (make-string end RIGHT-PAREN-CHAR)))
+      (special-case expr width end)))
+
+;; one-line : Expr -> String
+;; GIVEN: an expression
+;; RETURNS: a string the expression converted to
+;; EXAMPLE: see test
+;; STRATEGY: struct decomp on expr : Expr
+(define (one-line expr)
+  (cond 
+    [(integer? expr) (number->string expr)]
+    [(sum-exp? expr) (expr-one-line SUM-TITLE (sum-exp-exprs expr))]
+    [(mult-exp? expr) (expr-one-line MULT-TITLE (mult-exp-exprs expr))]))
+
+;; expr-one-line : String Expr -> String
+;; GIVEN: a string and an expression
+;; RETURNS: a string the expression converted
+;; WHERE: the expression would only be sum-exp and mult-exp
+;; STRATEGY: function comp
+(define (expr-one-line str expr)
+  (string-append 
+   str
+   (foldr
+    ;;
+    (lambda (f rest)
+      (string-append 
+       SPACE 
+       (one-line f)
+       rest))
+    RIGHT-PARENTHESIS
+    expr)))
+
+;; special-case : Expr NonNegInt NonNegInt -> ListOf<String>
+;; GIVEN: a expression, the width and the end parenthesis number
+;; RETURNS: a list of strings after dealt with
+;; EXAMPLE: see test
+;; STRATEGY: struct decomp on expr : Expr
+(define (special-case expr width end)
+  (cond
+    [(integer? expr) (error ERROR-MESSAGE)]
+    [(sum-exp? expr)
+     (add-title SUM-TITLE (next-level (sum-exp-exprs expr) width end))]
+    [(mult-exp? expr)
+     (add-title MULT-TITLE (next-level (mult-exp-exprs expr) width end))]))
+
+;; next-level : NELOExpr NonNegInt NonNegInt -> ListOf<String>
+;; GIVEN: a non-empty list of expression, the width 
+;; and the end parenthesis number
+;; RETURNS: a list of strings after dealt with
+;; WHERE: the expression would only be sum-exp and mult-exp
+;; EXAMPLES: see test
+;; STRATEGY: function comp
+(define (next-level expr w e)
+  (foldr
+   (lambda (f rest)
+     (append 
+      (e-to-s f (- w THREE) (if (empty? rest) (+ e ONE) ZERO))
+      rest))
+   empty
+   expr))
+
+;; add-title : String ListOf<String> -> ListOf<String>
+;; GIVEN: a title and a list of strings
+;; RETURNS: a list of strings after added title
+;; WHERE: title would only be "(+" and "(*"
+;; EXAMPLE: see test
+;; STRATEGY: function
+(define (add-title str lst)
+  (cons
+   (string-append str SPACE (first lst))
+   (map
+    (lambda (f)
+      (string-append TRIPLE-SPACE f))
+    (rest lst))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; TEST
+
+;; DEFINE FOR TEST
+
+(define (dp e w) (display-strings! (expr-to-strings e w)))
+
+(define e1 (make-sum-exp '(22 33 44)))
+(define e2 (make-sum-exp
+            (list
+             (make-mult-exp '(22 3333 44))
+             (make-mult-exp
+              (list
+               (make-sum-exp '(66 67 68))
+               (make-mult-exp '(42 43))))
+             (make-mult-exp '(77 88)))))
+
+;; BEGIN TEST
+
+(dp e1 25)
+(dp e1 10)
+(dp e2 100)
+(dp e2 50)
+(dp e2 20)
+(dp e2 17)
+(dp e2 15)
+;(dp e2 12)
+
+(begin-for-test
+  (check-equal? 
+   (expr-to-strings hw-example-2 100)
+   (list "(+ (* 22 3333 44) (* (+ 66 67 68) (* 42 43)) (* 77 88))")
+   "this test expects a single list of whole
+    expression, but it fails")
+  (check-equal? (expr-to-strings hw-example-2 50)
+                (list "(+ (* 22 3333 44)"
+                      "   (* (+ 66 67 68) (* 42 43))"
+                      "   (* 77 88))")
+                "this test expects to split the expression
+                 into three lines, but it fails")
+  (check-equal? (expr-to-strings hw-example-2 20)
+                (list "(+ (* 22 3333 44)"
+                      "   (* (+ 66 67 68)"
+                      "      (* 42 43))"
+                      "   (* 77 88))")
+                "this test expects to split the expression
+                 into four lines, but it fails")
+  (check-equal? (expr-to-strings hw-example-2 15)
+                (list "(+ (* 22"
+                      "      3333"
+                      "      44)"
+                      "   (* (+ 66"
+                      "         67"
+                      "         68)"
+                      "      (* 42"
+                      "         43))"
+                      "   (* 77 88))")
+                "this test expects to split the expression
+                 into nine lines, but it fails")
+  (check-error (expr-to-strings hw-example-2 10)
+               "this test expects to throw a wrong message
+                due to lack of space for the expression lines,
+                but it fails")
+  )

@@ -1,0 +1,42 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname robot) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+(require
+  rackunit
+  "extras.rkt")
+
+(provide
+  initial-robot
+  robot-left 
+  robot-right
+  robot-forward
+  robot-north? 
+  robot-south? 
+  robot-east? 
+  robot-west?) 
+
+initial-robot : Number Number -> Robot
+GIVEN: a set of (x,y) coordinates
+RETURNS: a robot with its center at those coordinates, facing north
+(up).
+
+robot-left : Robot -> Robot
+robot-right : Robot -> Robot
+GIVEN: a robot
+RETURNS: a robot like the original, but turned 90 degrees either left
+or right.
+
+robot-forward : Robot PosInt -> Robot
+GIVEN: a robot and a distance
+RETURNS: a robot like the given one, but moved forward by the
+specified number of pixels.  If moving forward the specified number of
+pixels would cause the robot to move from being
+entirely inside the canvas to being even partially outside the canvas,
+then the robot should stop at the wall.
+
+robot-north? : Robot -> Boolean
+robot-south? : Robot -> Boolean
+robot-east? : Robot -> Boolean
+robot-west? : Robot -> Boolean
+GIVEN: a robot
+ANSWERS: whether the robot is facing in the specified direction.

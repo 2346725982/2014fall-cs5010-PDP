@@ -1,0 +1,21 @@
+#lang racket
+(require 2htdp/image)
+
+;; Example :
+;; (draw-list-of-string empty) => ""
+;; (draw-list-of-string (list empty empty empty)) => "   "
+;; (draw-list-of-string (list (list "hello" "world!"))) => "hello world!  "
+;; (draw-list-of-string (list (list "hello" "world!") (list "this" "is" "a" "test."))) => "hello world!  this is a test.  "
+
+(define (draw-string lst)
+  (cond
+    [(empty? lst) ""]
+    [else (string-append (first lst) (string-append " " (draw-string (rest lst))))]))
+
+(define (draw-list-of-string-text lst)
+  (cond
+    [(empty? lst) ""]
+    [else (string-append (draw-string (first lst)) (string-append " " (draw-list-of-string-text (rest lst))))]))
+
+(define (draw-list-of-string lst)
+  (text (draw-list-of-string-text lst) 10 blue))

@@ -1,0 +1,29 @@
+Date   Who       Start   Stop    Interruptions   Question TimeOnTask   Comments
+================================= "Module 07” ==================================
+10/27   ZW       19:00   21:10   02              Q2       130          understand the problem, and try to figure out a method, code
+10/27   ZW       22:20   23:20   00              Q2        60          finish the outline of the program, fix bugs!
+10/27   ZW       23:40   00:40   00              Q2        60          modify some functions to make it easier to read
+10/28   ZW       10:30   12:10   00              Q2       100          convert path to plan
+10/28   ZW       13:20   14:20   00              Q2        60          finish the function mentioned above
+10/28   ZW       15:15   16:45   00              Q2        90          add comment and try to simplify the code
+======================= committing to git : 10/28 16:45 ========================
+10/28   ZW       20:05   21:05   00              Q2        60          add comment
+10/30   KW       12:20   13:00   00              Q1        40          updated data definitions (added templates), refactored test code
+10/30   KW       13:00   13:33   00              Q1        33          cleaned up obstacle? slightly, may look into rewriting it later
+======================= committing to git : 10/30 13:34 ========================
+10/31   KW       10:20   11:49   15              Q1        74          added helper functions (set-intersect, set-remove), worked on blocks-to-obstacles
+10/31   KW       15:00   15:25   00              Q1        25          changed examples to tests for helpers, continue working on blocks-to-obstacles
+11/01   KW       18:55   21:22   20              Q1       127          worked on helper function for blocks-to-obstacles
+======================= committing to git : 11/01 21:23 ========================
+11/01   KW       22:30   23:42   10              Q1        62          added unionall helper function, providing a required function for find-obstacle
+======================= committing to git : 11/01 23:44 ========================
+11/02   KW       12:30   13:50   20              Q1        60          added examples, improved comments for obstacle
+======================= committing to git : 11/02 13:51 ========================
+11/03   KW       01:32   01:35   00              Q1        03          added comments to tests
+11/03   KW       01:35   02:08   00              Q2        33          added some tests
+======================= committing to git : 11/03 02:09 ========================
+
+Total Time On Task Q1 (minutes): 384
+TOTQ1(hours and tenths): 6.4
+Total Time On Task Q2 (minutes): 593
+TOTQ2(hours and tenths): 9.9

@@ -1,0 +1,11 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname obstacles) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+;; A Position is a (list PosInt PosInt)
+;; (x y) represents the position x, y.
+;; Note: this is not to be confused with the built-in data type Posn.
+
+;; A PositionSet is a list of positions without duplication.
+
+;; A PositionSetSet is a list of PositionSets without duplication,
+;; that is, no two position-sets denote the same set of positions.

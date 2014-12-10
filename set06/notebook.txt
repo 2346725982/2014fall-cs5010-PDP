@@ -1,0 +1,40 @@
+Date   Who       Start   Stop    Interruptions   Question TimeOnTask   Comments
+================================= "Module 06” ==================================
+10/19   ZW       15:13   16:13   02              Q2       60           understand the reading materials
+10/19   ZW       16:20   17:10   00              Q2       50           look up info for the functions int->string, num-string, etc
+10/19   ZW       18:55   19:30   00              Q2       35           think about how to print out the string according to the different situation
+10/19   ZW       19:40   20:30   02              Q2       50           implement the produce lists function, lack of the operation symbols
+10/19   ZW       20:45   21:15   03              Q2       30           use foldl to add parentheses
+10/19   ZW       21:25   22:15   01              Q2       50           think about the logic
+======================= committing to git : 10/19 22:20 ========================
+10/19   ZW	     23:30   01:10   02              Q2       40           think about the logic, again! try to figure it out!
+10/20   ZW       01:40   03:50   00              Q2       130          do I finish the required function?
+======================= committing to git : 10/20 03:53 ========================
+10/23   KW       01:49   02:58   12              Q1       57           made data definitions for nested-rep, flat-rep, and made tests for nested-rep?
+======================= committing to git : 10/23 02:58 ========================
+10/23   KW       12:20   12:54   00              Q1       34           added templates to data definitions, implemented nested-rep?, used hofc
+======================= committing to git : 10/23 12:55 ========================
+10/23   KW       12:58   01:38   10              Q1       30           added tests to nested-to-flat, revised data definitions slightly
+======================= committing to git : 10/23 01:40 ========================
+10/23   KW       15:00   15:18   00              Q1       18           re-reasoned how to turn nested list to flat, add "increment-section-num"
+10/24   KW       11:00   12:16   00              Q1       76           finished implementation of nested-to-flat, hopefully added correct invariants
+======================= committing to git : 10/24 12:18 ========================
+10/24   KW       15:15   15:19   00              Q1       04           fixed some typoes on contract, comments and did minor formatting changes
+======================= committing to git : 10/24 15:20 ========================
+10/26   ZW       12:30   14:00   04              Q2       90           add test and revise comment for Q2
+======================= committing to git : 10/26 14:02 ========================
+10/26   KW       20:15   20:18   00              Q1       03           changed strategy for first function of Q1
+10/26   KW       23:00   01:30   30              Q2       60           fixed comments, tests for all except next-level and add-title
+======================= committing to git : 10/27 01:34 ========================
+10/27   KW,ZW    13:00   14:19   00              Q2       79           updated invariants, finished tests
+======================= committing to git : 10/27 14:20 ========================
+10/27   KW       16:25   16:27   00              Q2       02           removed unnecessary definition of NELOExpr that wasn't used
+======================= committing to git : 10/27 16:28 ========================
+10/27   KW       16:28   16:30   00              Q1       02           fixed template for Sexp
+======================= committing to git : 10/27 16:31 ========================
+10/27   KW       16:45   16:50   00              Q1       05           fixed functions that used Sexp template
+
+Total Time On Task Q1 (minutes): 226
+TOTQ1(hours and tenths): 3.8
+Total Time On Task Q2 (minutes): 676
+TOTQ2(hours and tenths): 11.3

@@ -1,0 +1,54 @@
+Date   Who       Start   Stop    Interruptions   Question TimeOnTask   Comments
+================================= "Module 05" =================================
+10/13   ZW       13:30   14:10   03              Q1       40           understand the materials
+10/13   ZW       14:10   14:55   02              Q1       45           writing key-event function
+10/13   ZW       15:55   17:35   00              Q1       40           finish key-event function, maybe?
+======================= committing to git : 10/13 18:00 ========================
+10/13   ZW       18:45   19:45   03              Q1       60           debug, stuck at drawing line connecting parents and children
+10/13   ZW       19:50   20:40   05              Q1       50           found so many functions needed to modify
+======================= committing to git : 10/13 20:40 ========================
+10/13   ZW       20:40   22:00   10              Q1       100          I think I have finished most of the functions requested
+======================= committing to git : 10/13 22:00 ========================
+10/13   ZW       23:20   01:20   00              Q1       120          add some comment & modify with HOFC
+======================= committing to git : 10/14 01:20 ========================
+10/14   ZW,KW    13:00   15:02   00              Q1       122          added some functions
+======================= committing to git : 10/14 03:04 ========================
+10/14   KW       15:02   15:15   00              Q1       13           re-examined world-after-button-down function + helper functions
+10/14   KW       19:50   20:14   00              Q1       24           changed names of some constants for clarity, added some examples to data
+======================= committing to git : 10/14 20:15 ========================
+10/14   KW       22:45   23:05   00              Q1       20           fixed tests for world-to-roots, node-to-center, node-to-sons, node-to-selected?
+======================= committing to git : 10/14 23:06 ========================
+10/15   KW       00:25   01:14   00              Q1       49           consolidated tests for world-after-button-down, world-after-button-up, renamed functions for clarity
+======================= committing to git : 10/15 01:15 ========================
+10/16   KW       00:04   01:35   15              Q1       76           added tests for rest of world-after-mouse-event, most of world-after-key-event
+======================= committing to git : 10/16 01:36 ========================
+10/16   KW       12:56   15:14   30              Q1       108          added tests for world-with-root-added, broke down some functions with helper fns
+======================= committing to git : 10/16 15:30 ========================
+10/16   KW       21:10   21:22   12              Q1       12           rewrote nodes-with-node-deleted to be more readable, broken into helper function
+======================= committing to git : 10/16 21:22 ========================
+10/17   KW       02:20   02:50   00              Q1       30           rewrote world-with-upper-nodes-deleted and its helper functions, added tests
+======================= committing to git : 10/17 02:53 ========================
+10/17   KW       02:55   03:04   00              Q1       9            fixed issue with add-son where a son can be added even if there is no room to left
+======================= committing to git : 10/17 03:05 ========================
+10/17	ZW	     08:50   09:23   00              Q1       33           format changing
+======================= committing to git : 10/17 09:23 ========================
+10/17   ZW       09:23   10:04   00              Q1       41           try to simplify the code, so much work to do!!!!
+10/17   ZW       10:23   12:40   00              Q1       137          simplify functions, rewrite some contracts and. make code easier to read
+10/17   ZW       12:40   13:40   00              Q1       60           almost finish simplifying
+10/17   ZW       14:00   15:10   00              Q1       70           finish modifying function, the next step is to modify comment and test
+======================= committing to git : 10/17 15:10 ========================
+10/17	ZW	     15:10   16:25   05              Q1       75           tried to decompose complicated functions. stuck at drag function
+10/18	ZW	     20:10   21:10   10              Q1       60           add some tests, cover more functions
+10/18	ZW	     22:10   00:10   02              Q1       120          finish test, cover all black
+======================= committing to git : 10/19 00:13 ========================
+10/19   ZW,KW    13:30   13:46   00              Q1       16           reviewed code, made sure all lines < 80 col
+======================= committing to git : 10/19 13:47 ========================
+10/19   ZW,KW    13:50   13:52   00              Q1       02           removed commented out code blocks
+======================= committing to git : 10/19 13:53 ========================
+10/19   ZW,KW    13:55   13:58   00              Q1       03           updated strategy on nodes-with-node-deleted
+======================= committing to git : 10/19 13:59 ========================
+
+Total Time On Task Q1 (minutes): 1535
+TOTQ1(hours and tenths): 25.6
+
+

@@ -1,0 +1,1 @@
+("6.0" ("bdaea0f8059fe66d62629e44f0873f6820264280" . "5a9fce8320509dc46c00b884bcd55b9cc1df3d55") #"/Users/wangzoltan/GitHub/pdp-pair-kwong-wangzet/set07/extras.rkt" #"/Users/wangzoltan/GitHub/pdp-pair-kwong-wangzet/set07/sets.rkt" (collects #"rackunit" #"main.rkt") (collects #"lang" #"htdp-intermediate-lambda.rkt") (collects #"lang" #"htdp-intermediate-lambda-reader.rkt"))

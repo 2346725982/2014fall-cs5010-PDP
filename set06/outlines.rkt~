@@ -1,0 +1,283 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname outlines) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t write repeating-decimal #f #t none #f ())))
+;; outlines.rkt
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; FILE REQUIRED
+
+(require rackunit)
+(require "extras.rkt")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; FUNCTIONS PROVIDED
+
+(provide 
+ nested-rep?
+ nested-to-flat)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; DATA DEFINITIONS
+
+;An Sexp is one of the following
+;-- a String
+;-- a NonNegInt
+;-- a ListOfSexp
+
+; Examples:
+(define STRING-SEXP "this is a string sexp")
+(define INT-SEXP-0 0)
+(define INT-SEXP-7 7)
+(define LOS-SEXP-1 (list STRING-SEXP empty))
+(define LOS-SEXP-2 (list STRING-SEXP (list INT-SEXP-0 empty)))
+
+; sexp-fn : Sexp -> ???
+;(define (sexp-fn s)
+;  (cond [(string? s) ...]
+;        [(integer? s) ...]
+;        [else ...]))
+
+
+;A ListOfSexp is one of
+;-- empty
+;-- (cons Sexp ListOfSexp)
+
+; Examples:
+(define EMPTY-LOS empty)
+; see LOS-SEXP-1
+; see LOS-SEXP-2
+
+; list-of-sexp-fn : ListOfSexp -> ???
+;(define (list-of-sexp-fn l)
+;  (cond [(emtpy? l) ...]
+;        [else (... (first l)
+;                   (rest l))]))
+
+
+; A NestedRep is a ListOfNestedSexp
+
+; A ListOfNestedSexp is one of:
+; -- empty
+; -- (cons NestedSexp ListOfNestedSexp)
+
+; A NestedSexp is one of:
+; -- String
+; -- ListOfNestedSexp
+
+;; Templates:
+;; nestedrep-fn : NestedRep -> ???
+;(define (nestedrep-fn nr)
+;  (cond [(empty? nr) ...]
+;        [else ... (nested-sexp-fn (first nr))
+;              ... (rest nr)]))
+
+;; nested-sexp-fn : NestedSexp -> ???
+;(define (nested-sexp-fn ns)
+;  (cond [(string? ns) ...]
+;        [else ... (nestedrep-fn ns)]))
+
+;; Example:
+(define NESTED-EXAMPLE '(("The first section"
+                          ("A subsection with no subsections")
+                          ("Another subsection"
+                           ("This is a subsection of 1.2")
+                           ("This is another subsection of 1.2"))
+                          ("The last subsection of 1"))
+                         ("Another section"
+                          ("More stuff")
+                          ("Still more stuff"))))
+
+
+; A FlatRep is one of:
+; -- empty
+; -- (cons FlatSexp ListOfFlatSexp)
+
+; A FlatSexp is a (list ListOfPosInt String)
+; WHERE a ListOfPosInt is non-empty and unique
+
+;; Templates:
+;; flatrep-fn: FlatRep -> ???
+;(define (flatrep-fn fr)
+;  (cond [(empty? fr) ...]
+;        [else ... (flat-sexp-fn (first fr))
+;              ... (rest fr)]))
+
+;; flat-sexp-fn : FlatSexp -> ???
+;(define (flat-sexp-fn fs)
+;  (... (first fs) (second fs)))
+
+
+;; Example:
+(define FLAT-EXAMPLE '(((1) "The first section")
+                       ((1 1) "A subsection with no subsections")
+                       ((1 2) "Another subsection")
+                       ((1 2 1) "This is a subsection of 1.2")
+                       ((1 2 2) "This is another subsection of 1.2")
+                       ((1 3) "The last subsection of 1")
+                       ((2) "Another section")
+                       ((2 1) "More stuff")
+                       ((2 2) "Still more stuff")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; CONSTANTS
+
+(define SECTION-START (list 1))
+
+;; FUNCTIONS
+
+;nested-rep? : Sexp -> Boolean
+;GIVEN: an Sexp
+;RETURNS: true iff it is the nested representation of some outline
+
+;; Examples/Tests:
+(begin-for-test 
+  (check-equal? (nested-rep? empty) true
+                "Empty expression counts as nested")
+  (check-equal? (nested-rep? NESTED-EXAMPLE) true
+                "Nested example is a nested expression")
+  (check-equal? (nested-rep? FLAT-EXAMPLE) false
+                "Flat example is not a nested expression")
+  (check-equal? (nested-rep? STRING-SEXP) false
+                "String is not a nested expression")
+  (check-equal? (nested-rep? INT-SEXP-0) false
+                "NonNegInt are not nested expressions")
+  (check-equal? (nested-rep? LOS-SEXP-1) true
+                "ListOfSexp with String is nested")
+  (check-equal? (nested-rep? LOS-SEXP-2) false
+                "ListOfSexp with String and NonNegInt is not nested"))
+
+;; Strategy: Cases on s : Sexp
+
+(define (nested-rep? s)
+  (cond [(string? s) false]
+        [(integer? s) false]
+        [else (list-of-sexp-nested-rep? s)]))
+
+
+;; list-of-sexp-nested-rep? : ListOfSexp -> Boolean
+;; Returns true iff it the given ListOfSexp is the
+;; nested representation of some outline
+
+;; Examples (tested by nested-rep?):
+;(list-of-sexp-nested-rep? NESTED-EXAMPLE) = true
+;(list-of-sexp-nested-rep? FLAT-EXAMPLE) = false
+;(list-of-sexp-nested-rep? LOS-SEXP-2) = false
+
+;; Strategy: HOFC
+
+(define (list-of-sexp-nested-rep? los)
+  (andmap sexp-nested-rep? los))
+
+
+;; sexp-nested-rep? : Sexp -> Boolean
+;; Returns true iff the given Sexp is a valid Sexp
+;; for a nested representation of some outline
+
+;; Examples (tested by nested-rep?):
+;(sexp-nested-rep? STRING-SEXP) = true
+;(sexp-nested-rep? INT-SEXP-7) = false
+;(sexp-nested-rep? LOS-EXP-1) = true
+
+;; Strategy: Cases on s : Sexp
+
+(define (sexp-nested-rep? s)
+  (cond [(string? s) true]
+        [(integer? s) false]
+        [else (list-of-sexp-nested-rep? s)]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; nested-to-flat : NestedRep -> FlatRep
+;; GIVEN: the representation of an outline as a nested list
+;; RETURNS: the flat representation of the outline
+
+;; Examples/Tests:
+(begin-for-test 
+  (check-equal? (nested-to-flat empty) 
+                empty
+                "The flat representation of an empty outline is also empty")
+  (check-equal? (nested-to-flat NESTED-EXAMPLE)
+                FLAT-EXAMPLE
+                "The flat representation of the nested example is flat"))
+
+;; Strategy: Function Composition
+
+(define (nested-to-flat n)
+  (nested-to-flat/acc n SECTION-START))
+
+
+;; nested-to-flat/acc : NestedRep ListOfPosInt -> FlatRep
+;; Given: A nested representation of an outline, nr and
+;;        a list representing the section number, section
+;; Returns: A flat representation of the outline
+;; WHERE: 'section' is non-empty and is incremental
+
+;; Examples (tested by nested-to-flat):
+;(nested-to-flat/acc empty SECTION-START) = empty
+;(nested-to-flat/acc NESTED-EXAMPLE SECTION-START) = FLAT-EXAMPLE
+
+;; Strategy: Structural Decomposition on nr : NestedRep
+
+(define (nested-to-flat/acc nr section)
+  (cond [(empty? nr) empty]
+        [else (append (nested-sexp-to-flat (first nr) section)
+                      (nested-to-flat/acc 
+                       (rest nr) (increment-section-num section)))]))
+
+
+;; nested-sexp-to-flat : NestedSexp ListOfPosInt -> FlatSexp
+;; Given: A nested sexp and a section number
+;; Returns: A flat representation of the nested sexp with its
+;; corresponding section number
+
+;; Examples (tested by nested-to-flat):
+; (nested-sexp-to-flat "A section" '(1 1)) = '((1 1) "A section")
+; (nested-sexp-to-flat '("A section" ("A subsection")) '(2))
+; = '(((2) "A section")
+;     ((2 1) "A subsection")))
+
+;; Strategy: Structural Decomposition on ns : NestedSexp
+
+(define (nested-sexp-to-flat ns section)
+  (cond [(string? ns) (list section ns)]
+        [else (nestedrep-to-flat/acc2 ns section)]))
+
+
+;; nestedrep-to-flat/acc2 : NestedRep ListOfPosInt -> FlatRep
+;; Given: A nested representation of an outline 
+;;        and a section number
+;; WHERE: The nested representation is non-empty
+;; Returns: The flat representation of this (non-empty) nested outline
+
+;; Examples (tested by nested-to-flat):
+;(nestedrep-to-flat/acc2 '("Test") '(5)) = '((5) "Test")
+;(nestedrep-to-flat/acc2 '("Test" ("Test2")) '(3 1)) = '(((3 1) "Test")
+;                                                        ((3 1 1) "Test2"))
+
+ ;; Strategy: Structural Decomposition on nr : NestedRep
+
+(define (nestedrep-to-flat/acc2 nr section)
+  (cons (nested-sexp-to-flat (first nr) section)
+        (nested-to-flat/acc (rest nr) (append section SECTION-START))))
+
+
+;; increment-section-num : ListOfPosInt -> ListOfPosInt
+;; Given: A non-empty list of positive integers
+;; Returns: A list of positive integers representing the next section
+
+;; Examples/Tests:
+(begin-for-test (check-equal? (increment-section-num '(1)) '(2)
+                              "The section following '1' is '2'")
+                (check-equal? (increment-section-num '(1 2 3)) '(1 2 4)
+                              "The section following '1 2 3' is '1 2 4'"))
+
+;; Strategy: Structural Decomposition on l : ListOfPosInt
+
+(define (increment-section-num l)
+  (cond [(empty? (rest l)) (cons (add1 (first l)) empty)]
+        [else (cons (first l)
+                    (increment-section-num (rest l)))]))

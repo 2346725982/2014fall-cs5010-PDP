@@ -1,0 +1,100 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname inventory) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+Design a program called inventory.rkt, containing a set of functions for manipulating the inventory 
+of a bookstore, represented as a list of books. For each book, we must maintain the following information:
+isbn, an integer (the "international standard book number"). This serves as a unique identifier for this book. 
+There is an official data definition for ISBN's, but we will simply model them as integers.
+title, a string
+author, a string
+publisher, a string
+unit price: a non-negative integer, the price at which we will sell the book (in USD*100, ie $14.99 
+                                                                                 is represented as 1499).
+unit cost: a number, the cost of the book to the bookstore in USD*100, also a non-negative integer
+number of copies on hand
+re-order status. Our bookstore periodically reorders books from the publisher. For each book, there is 
+at most one outstanding reorder. If there is no reorder, the reorder status must represent this information. 
+If there is a reorder, the re-order status contains the number of days until the the next shipment of this book 
+is expected to arrive, and the number of copies expected to arrive at that time. Both of these are positive 
+integers.
+the volume taken up by one unit of this item, in cubic feet.
+The inventory satisfies the invariant that there are no duplicates: any isbn appears at most once 
+in the inventory. In this problem set, we don't provide any way to add or remove books (ISBNs) from the 
+inventory, although we do model changing the number of copies of an ISBN that are currently in stock.
+
+You also need to deal with orders. An order is a list of line items. A line item consists of an ISBN and 
+the quantity ordered. The quantity ordered is always a positive integer. Here is an example of an order
+each line of the table is a line item. Here is an example of how an order might be displayed as a table.
+
+;; A MaybeInteger is one of:
+;; -- Integer
+;; -- false
+
+
+inventory-potential-profit : Inventory ->  Integer
+GIVEN: an inventory
+RETURNS: the total profit, in USD*100, for all the items in stock (i.e., how much
+the bookstore would profit if it sold every book in the inventory).
+
+inventory-total-volume : Inventory -> Real
+RETURNS: the total volume needed to store all the books in stock.
+
+price-for-line-item : Inventory LineItem -> MaybeInteger
+GIVEN: an inventory and a line item
+RETURNS: the price for that line item (the quantity times the unit
+price for that item).  Returns false if that isbn does not exist in
+the inventory. 
+
+fillable-now? : Order Inventory -> Boolean.
+GIVEN: an order and an inventory
+RETURNS: true iff there are enough copies of each book on hand to fill
+the order.  If the order contains a book that is not in the inventory,
+then the order is not fillable.
+
+days-til-fillable : Order Inventory -> MaybeInteger
+GIVEN: an order and an inventory
+RETURNS: the number of days until the order is fillable, assuming all
+the shipments come in on time.  Returns false if there won't be enough
+copies of some book, even after the next shipment of that book comes
+in.
+EXAMPLES: if the order contains one book that is out of stock, with a
+reorder status showing 2 days until delivery, then the order is
+fillable in 2 days.  If the order is for 10 copies of the book, and
+the next order consists of only 5 books, then the function should return false.
+
+price-for-order : Inventory Order -> NonNegInteger
+RETURNS: the total price for the given order, in USD*100.  The price does not
+depend on whether any particular line item is in stock.  Line items
+for an ISBN that is not in the inventory count as 0.
+
+inventory-after-order : Inventory Order -> Inventory.
+GIVEN: an order
+WHERE: the order is fillable now
+RETURNS: the inventory after the order has been filled.
+
+increase-prices : Inventory String Real -> Inventory
+GIVEN: an inventory, a publisher, and a percentage,
+RETURNS: an inventory like the original, except that all items by that
+publisher have their unit prices increased by the specified
+percentage.
+EXAMPLE: (increase-prices inventory1 "MIT Press" 10)
+returns an inventory like the original, except that all MIT Press
+books in the inventory have had their prices increased by 10%.
+
+Also provide the functions:
+
+make-book  (9 arguments)
+make-line-item (2 arguments)
+The arguments to these functions should appear in the same order as
+they do in the problem statement.
+
+reorder-present? : ReorderStatus -> Boolean
+RETURNS: true iff the given ReorderStatus shows a pending re-order.
+
+make-empty-reorder : Any -> ReorderStatus
+Ignores its argument
+RETURNS: a ReorderStatus showing no pending re-order. 
+
+make-reorder : PosInt PosInt -> ReorderStatus
+GIVEN: a number of days and a number of copies
+RETURNS: a ReorderStatus with the given data.
